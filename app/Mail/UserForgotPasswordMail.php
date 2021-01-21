@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 
-class UserConfirmationMail extends Mailable
+class UserForgotPasswordMail extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -21,8 +21,7 @@ class UserConfirmationMail extends Mailable
     {
         $this->url = $url;
         $this->user = $user;
-        $this->subject = trans('mail.user_confirmation.subject') . ' - ' . env('APP_NAME');
-
+        $this->subject = trans('mail.user_forgot_password.subject') . ' - ' . env('APP_NAME');
     }
 
     /**
@@ -32,6 +31,6 @@ class UserConfirmationMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.user-confirmation');
+        return $this->markdown('mail.user-forgot-password');
     }
 }
